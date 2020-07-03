@@ -12,6 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+/**
+ * Classe Produto
+ * @author Nelio Santos
+ *
+ */
 @Entity
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +29,7 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 	
+	@JsonBackReference // Omite a lista de categorias, já que esta sendo chamada na classe de categoria
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", // Criação da coluna que vai juntar as duas classes
 		joinColumns = @JoinColumn(name="produto_id"), // Chave estrangeira dessa classe

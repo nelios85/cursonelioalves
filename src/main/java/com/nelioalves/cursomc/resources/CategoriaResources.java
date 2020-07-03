@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nelioalves.cursomc.domain.Categoria;
 import com.nelioalves.cursomc.services.CategoriaService;
 
+/**
+ * Classe responsável pelo roteamento das páginas via REST
+ * @author Nelio Santos
+ *
+ */
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResources {
@@ -19,7 +24,7 @@ public class CategoriaResources {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Categoria obj = service.buscar(id);
+		Categoria obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
