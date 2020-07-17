@@ -15,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -33,7 +32,7 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 	
-	@JsonBackReference // Omite a lista de categorias, já que esta sendo chamada na classe de categoria
+	@JsonIgnore // Omite a lista de categorias, já que esta sendo chamada na classe de categoria
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", // Criação da coluna que vai juntar as duas classes
 		joinColumns = @JoinColumn(name="produto_id"), // Chave estrangeira dessa classe
